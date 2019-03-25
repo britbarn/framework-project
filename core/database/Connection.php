@@ -3,10 +3,13 @@
     /**
      * Class to create a static database connection
      */
+
     class Connection
     {
         
-        public static function make($config) {
+        public static function getConnection() {
+            $app['config'] = require 'config.php';
+            $config = $app['config']['database'];
             try {
 
                 return new PDO(
@@ -14,12 +17,11 @@
                     $config['username'],
                     $config['password'],
                     $config['options']
-
                 );
 
             } catch (PDOException $e) {
 
-                die($e->getMessage());
+                return ($e->getMessage());
             }
         }
     }
