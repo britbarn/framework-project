@@ -1,5 +1,5 @@
 <?php 
-
+namespace Api;
 /**
  *  Model for User
  */
