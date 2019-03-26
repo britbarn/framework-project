@@ -1,9 +1,5 @@
 <?php
 
-    /**
-     * Class to create a static database connection
-     */
-
     class Connection
     {
         

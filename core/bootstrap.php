@@ -6,9 +6,14 @@
 */
 
 //pull in the core files
-require 'core/database/Connection.php';
-require 'core/database/Queries.php';
-require 'User.php';
+require 'Core/Database/Connection.php';
+
+require_once 'User.php';
+
+include('Controllers/UsersController.php');
+
+
+$UsersController = new UsersController();
 
 $connection = Connection::getConnection();
 
