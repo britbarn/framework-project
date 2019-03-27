@@ -18,7 +18,7 @@ class User
     {
 
         $row = [
-            'name' => $data->firstName,
+            'firstName' => $data->firstName,
             'lastName' => $data->lastName,
             'email' => $data->email,
             'password' =>  password_hash($data->password, PASSWORD_DEFAULT)
@@ -26,7 +26,7 @@ class User
 
         $pdo = Connection::getConnection();
 
-        $query = $pdo->prepare("INSERT INTO users SET name=:name, lastName=:lastName, email=:email, password=:password")->execute($row);
+        $query = $pdo->prepare("INSERT INTO users SET firstName=:firstName, lastName=:lastName, email=:email, password=:password")->execute($row);
 
         return $pdo->lastInsertId();
 
@@ -51,7 +51,7 @@ class User
 
         $row = [
             'id' => $data->id,
-            'name' => $data->firstName,
+            'firstName' => $data->firstName,
             'lastName' => $data->lastName,
             'email' => $data->email,
             'password' =>  password_hash($data->password, PASSWORD_DEFAULT)
@@ -59,7 +59,7 @@ class User
 
         $pdo = Connection::getConnection();
 
-        $query = $pdo->prepare("UPDATE users SET name=:name, lastName=:lastName, email=:email, password=:password WHERE id=:id;");
+        $query = $pdo->prepare("UPDATE users SET firstName=:firstName, lastName=:lastName, email=:email, password=:password WHERE id=:id;");
 
         // return $query;
         $query->execute($row);
