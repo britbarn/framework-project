@@ -1,6 +1,8 @@
 <?php
 namespace Api\Controllers;
 
+use Api\User;
+
 // require 'Core/Database/Connection.php';
 // require 'User.php';
 

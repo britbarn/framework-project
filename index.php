@@ -1,11 +1,11 @@
 <?php
 
 spl_autoload_register();
-var_dump(new Api\User);
-
 
 use Api\Core\Bootstrap;
 use Api\Router;
+use Api\Controllers\UsersController;
+
 
 
 
@@ -19,7 +19,6 @@ use Api\Router;
 
 
 $data = array(
-		'id' => '47',
         'firstName' => 'testupdate!',
         'lastName' => 'testingupdate',
         'password' => 'secret',
@@ -27,15 +26,17 @@ $data = array(
     );
 
 
-// $UsersController->updateUser(json_encode($data));
+$UsersController = new UsersController();
+$UsersController->createUser(json_encode($data));
 // $UsersController->deleteUser(45);
+
 
 
 
 
 $router = new Router();
 
-$router->get(array('/Api/user/read/{$id}','UsersController'));
+$router->post(array('/Api/user/read/','UsersController'));
 $router->delete(array('/Api/user/delete/1','UsersController@deleteUser'));
 
 $router->execute();

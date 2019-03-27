@@ -24,16 +24,14 @@ class Router {
     $match = false;
     foreach ($this->list_routes() as $key => $route) {
     
-      //if the method in the route array matches what the server sent over
-      //and the request in the route array matches what came from the server
+      //check the route array for both the method and the requiest URI
+      //if it matches the current server method and URI, we have a route match
       if($route[2] == $this->method && $route[0] == $this->request){
+        
         //call the function that is defined in the array
-        // $function = $this->routes[$key][1];
-        // $function();
         var_dump($this->routes[$key][1]);
-        // call_user_func_array($this->routes[$key][1], '');
-        // call_user_func_array([$this->controller, $this->method], $this->parameters);
-        call_user_func(array('UsersController','getUser'),'1');
+
+        call_user_func(array($this->routes[$key][1]),'1');
 
         $match = true;
         break;
@@ -41,12 +39,8 @@ class Router {
     }
     //let user know that there were no matching routes
     if(!$match){
-      echo "No routes found matching this path";
+      echo "No routes found";
     }
-  }
-
-  private function list_routes(){
-    return $this->routes;
   }
 
   private function add_route($route){
@@ -71,6 +65,11 @@ class Router {
   public function delete($route){
     $route[] = 'DELETE';
     $this->add_route($route);
+  }
+
+    //only want this class to be able to see the routes list
+   private function list_routes(){
+    return $this->routes;
   }
 
 }

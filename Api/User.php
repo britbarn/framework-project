@@ -1,5 +1,7 @@
 <?php 
 namespace Api;
+
+use Api\Core\Database\Connection;
 /**
  *  Model for User
  */
