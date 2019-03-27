@@ -2,7 +2,6 @@
 
 spl_autoload_register();
 
-use Api\Core\Bootstrap;
 use Api\Router;
 use Api\Controllers\UsersController;
 
