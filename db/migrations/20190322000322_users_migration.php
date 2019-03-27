@@ -33,7 +33,7 @@ class UsersMigration extends AbstractMigration
     public function change()
     {
         // vendor/bin/phinx migrate -e development
-        $table = $this->table('users');
+        $table = $this->createTable('users');
         $table->addColumn('email', 'string')
               ->addColumn('first_name', 'string')
               ->addColumn('last_name', 'string')
